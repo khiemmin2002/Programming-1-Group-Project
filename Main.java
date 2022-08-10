@@ -25,10 +25,11 @@ public class Main {
         System.out.print(asmInfo + '\n' + projectName + '\n' + "Instructor: " + instructorName + '\n' + "Group: " + groupName + '\n');
 
         for (int i = 0; i < studentID.length; i++) {
-            System.out.println(studentID[i]);
             for (int j = 0; j < studentID.length; j++) {
-                System.out.print(studentName[j]);
+                System.out.printf("%s : %s%n",studentID[i], studentName[j]);
             }
+            break;
+        }
         }
     }
 }
