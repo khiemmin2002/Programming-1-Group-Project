@@ -26,9 +26,9 @@ public class Main {
 
         for (int i = 0; i < studentID.length; i++) {
             for (int j = 0; j < studentID.length; j++) {
-                System.out.printf("%s : %s%n",studentID[i], studentName[j]);
+                if (i==j) {
+                    System.out.printf("%s : %s%n",studentID[i], studentName[j]);
             }
-            break;
         }
         }
     }
