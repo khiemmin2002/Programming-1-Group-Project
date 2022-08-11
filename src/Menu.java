@@ -1,5 +1,3 @@
-package home;
-
 import java.util.Scanner;
 
 public class Menu {
@@ -15,7 +13,7 @@ public class Menu {
             System.out.println(greeting);
             System.out.println("Please select the label that you wish for!");
             for (int i = 0; i < menuOptions.length; i++) {
-                System.out.println((i + 1) + ". " + menuOptions[i]);
+                System.out.println((i + 1) + " " + menuOptions[i]);
             }
             numbers = options.nextInt();
             switch (numbers) {
