@@ -2,6 +2,7 @@ import java.io. * ;
 import java.util. *;
 
 // feature 4: search for all available products for a particular category
+
 public class CategorySearch {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -9,9 +10,12 @@ public class CategorySearch {
         String n = sc.nextLine();
         String line = "";
         String splitBy = ",";
+        
         try {
             //parse CSV file into BufferedReader class constructor
             BufferedReader br = new BufferedReader(new FileReader("src/product.csv"));
+            
+            //...
             System.out.println("CATEGORY,PRODUCT ID,PRODUCT NAME,PRICE");
 
             while ((line = br.readLine()) != null)
