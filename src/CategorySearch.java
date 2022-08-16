@@ -14,8 +14,7 @@ public class CategorySearch {
         try {
             //parse CSV file into BufferedReader class constructor
             BufferedReader br = new BufferedReader(new FileReader("src/product.csv"));
-            
-            //...
+
             System.out.println("CATEGORY,PRODUCT ID,PRODUCT NAME,PRICE");
 
             while ((line = br.readLine()) != null)
