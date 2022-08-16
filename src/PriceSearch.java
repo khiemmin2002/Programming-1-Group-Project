@@ -6,9 +6,9 @@ public class PriceSearch {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter the minimum price: ");
-        String m = sc.next();
+        int m = sc.nextInt();
         System.out.println("Please enter the maximum price: ");
-        String p = sc.next();
+        int p = sc.nextInt();
         String line = "";
         String splitBy = ",";
         
@@ -23,7 +23,7 @@ public class PriceSearch {
                 String[] product = line.split(splitBy);
 
                 //if user enters a price range, show all lines (products) with price that is in that range
-                if (Integer.parseInt(m) <= Integer.parseInt(product[3]) && Integer.parseInt(p) >= Integer.parseInt(product[3])) {
+                if (m <= Integer.parseInt(product[3]) && p >= Integer.parseInt(product[3])) {
                     System.out.println(product[0] + "," + product[1] + "," + product[2] + "," + product[3]);
                 }
 
