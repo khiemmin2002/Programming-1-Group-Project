@@ -11,6 +11,7 @@ public class PriceSearch {
         String p = sc.next();
         String line = "";
         String splitBy = ",";
+        
         try {
             //parse CSV file into BufferedReader class constructor
             BufferedReader br = new BufferedReader(new FileReader("src/product.csv"));
