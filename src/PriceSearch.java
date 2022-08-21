@@ -11,7 +11,6 @@ public class PriceSearch {
         int p = sc.nextInt();
         String line = "";
         String splitBy = ",";
-        
         try {
             //parse CSV file into BufferedReader class constructor
             BufferedReader br = new BufferedReader(new FileReader("src/product.csv"));
@@ -21,10 +20,13 @@ public class PriceSearch {
             {
                 //use comma as separator
                 String[] product = line.split(splitBy);
-
-                //if user enters a price range, show all lines (products) with price that is in that range
-                if (m <= Integer.parseInt(product[3]) && p >= Integer.parseInt(product[3])) {
-                    System.out.println(product[0] + "," + product[1] + "," + product[2] + "," + product[3]);
+                try {
+                    //if user enters a price range, show all lines (products) with price that is in that range
+                    if (m <= Integer.parseInt(product[3]) && p >= Integer.parseInt(product[3])) {
+                        System.out.println(product[0] + "," + product[1] + "," + product[2] + "," + product[3]);
+                    }
+                } catch (Exception e) {
+                    continue;
                 }
 
             }
@@ -35,4 +37,3 @@ public class PriceSearch {
         }
     }
 }
-
