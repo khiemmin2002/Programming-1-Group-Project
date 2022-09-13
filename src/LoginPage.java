@@ -1,73 +1,12 @@
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
-
-public class LoginMain {
-    private JFrame mainFrame;
-    private JLabel headerLabel;
-    private JLabel statusLabel;
-    private JPanel controlPanel;
-    private JLabel msglabel;
-
-    public LoginMain() {
-        prepareGUI();
-    }
-
-    private void prepareGUI() {
-        mainFrame = new JFrame();
-        mainFrame.setSize(400, 300);
-        mainFrame.setLayout(new GridLayout(3, 1));
-        headerLabel = new JLabel("", JLabel.CENTER);
-        statusLabel = new JLabel("", JLabel.CENTER);
-        statusLabel.setSize(350, 100);
-        controlPanel = new JPanel();
-        controlPanel.setLayout(new FlowLayout());
-        mainFrame.add(headerLabel);
-        mainFrame.add(controlPanel);
-        mainFrame.add(statusLabel);
-        mainFrame.setVisible(true);
-        mainFrame.setTitle("Ví dụ FlowLayout trong Java Swing");
-        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    }
-
-    private void showFlowLayoutDemo() {
-        headerLabel.setText("Layout in action: FlowLayout");
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.darkGray);
-        panel.setSize(200, 200);
-        FlowLayout layout = new FlowLayout();
-        layout.setHgap(10);
-        layout.setVgap(10);
-        panel.setLayout(layout);
-        panel.add(new JButton("OK"));
-        panel.add(new JButton("Cancel"));
-        controlPanel.add(panel);
-        mainFrame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        LoginMain demo = new LoginMain();
-        demo.showFlowLayoutDemo();
-    }
-}
-
-
-
-Test.java
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
-
 import static javax.swing.BorderFactory.createEmptyBorder;
 
-public class Test extends JFrame {
+public class LoginPage implements ActionListener {
     private JFrame frame;
     private JPanel controlPanel;
     private JPanel bottomPanel;
@@ -82,14 +21,17 @@ public class Test extends JFrame {
     private JLabel userlabel;
     private JLabel passlabel;
     private JLabel loginlabel;
-    public Test() {
-        setupGUI()
-        ;    }
-    private void setupGUI() {
+    private JLabel messagelabel;
+
+    HashMap<String, String> logininfo = new HashMap<String, String>();
+
+    LoginPage(HashMap<String, String> loginOriginals) {
+        logininfo = loginOriginals;
+
         frame = new JFrame();
         ///ko dc quên tạo parameters/ args ở đây nếu ko sẽ ko dùng dc public giữa các methods
         frame.setSize(500, 500);
-        frame.setLayout(new GridLayout(4,1));
+        frame.setLayout(new GridLayout(5, 1));
         frame.setTitle("Login");
         ///lấy content pane là pane chính là frame còn mấy cái panel nằm trong
         //frame đó vẫn phải thêm code edit riêng
@@ -110,6 +52,8 @@ public class Test extends JFrame {
 //        log_btn.setBorder(BorderFactory.createEmptyBorder(5,10,5,10));
 //        log_btn.setBorderPainted(true);
         log_btn.setMargin(new Insets(10, 10, 10, 10));
+        log_btn.addActionListener(this);
+
         ///Phải tạo trc r ms ms dc apply mấy cái edit vào method
         //frame phải add theo thứ tự
         //loginlabel xong controlPanel trc xong log_btn thì cái frame sẽ display theo thứ tự
@@ -120,29 +64,32 @@ public class Test extends JFrame {
         reg_btn = new JButton("Register");
         reg_btn.setFont(new Font("Didot", Font.PLAIN, 14));
         reg_btn.setMargin(new Insets(10, 10, 10, 10));
+        reg_btn.addActionListener(this);
+        messagelabel = new JLabel("not running", JLabel.CENTER);
+        messagelabel.setFont(new Font("Didot", Font.PLAIN, 14));
         frame.add(loginlabel);
         frame.add(controlPanel);
         frame.add(mainPanel);
         frame.add(bottomPanel);
+        frame.add(messagelabel);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
 
-    private void showGridLayout() {
+
         controlPanel.setBackground(new Color(-16));
         controlPanel.setSize(400, 400);
         controlPanel.setForeground(new Color(-16777216));
-        controlPanel.setLayout(new GridLayout(2,2,10,10));
+        controlPanel.setLayout(new GridLayout(2, 2, 10, 10));
         Border padding = createEmptyBorder(0, 40, 0, 40);
         controlPanel.setBorder(padding);
         userlabel.setBackground(new Color(-16777216));
         userlabel.setForeground(new Color(-16777216));
-        username.setBackground(new Color(16777215));
+        username.setBackground(new Color(12303291));
         username.setForeground(new Color(16777215));
 
         passlabel.setBackground(new Color(-16777216));
         passlabel.setForeground(new Color(-16777216));
-        password.setBackground(new Color(16777215));
+        password.setBackground(new Color(12303291));
         password.setForeground(new Color(16777215));
         loginlabel.setForeground(new Color(-16777216));
         controlPanel.add(userlabel);
@@ -154,6 +101,7 @@ public class Test extends JFrame {
         mainPanel.setForeground(new Color(-16));
         log_btn.setBackground(new Color(-16));
         log_btn.setForeground(new Color(-16777216));
+//        log_btn.add(ActionListener)
         mainPanel.add(log_btn);
         Border padd = BorderFactory.createEmptyBorder(20, 0, 0, 0);
         mainPanel.setVisible(true);
@@ -161,7 +109,7 @@ public class Test extends JFrame {
 
         bottomPanel.setBackground(new Color(-16));
         bottomPanel.setForeground(new Color(-16777216));
-        bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
+        bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
 //        Border padds = BorderFactory.createEmptyBorder(0, 10, 30, 10);
 //        bottomPanel.setBorder(padds);
         reg_btn.setBackground(new Color(-16));
@@ -178,71 +126,31 @@ public class Test extends JFrame {
         // làm trung gian giữa jframe frame và panel form1
         frame.setVisible(true);
     }
-    public static void main(String args[]) {
-        Test f = new Test();
-        //nên tạo 1 constructor để tạo layout cơ bản trc
-        //sau đó mấy cái màu mè tô điểm margin thì tạo methods
-        f.showGridLayout();
-    }
 
-}
+    /**
+     * @param e the event to be processed
+     */
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == log_btn) {
+            String userID = username.getText();
+            String pass = password.getText();
 
-loginmain
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
-
-public class LoginMain {
-    private JFrame mainFrame;
-    private JLabel headerLabel;
-    private JLabel statusLabel;
-    private JPanel controlPanel;
-    private JLabel msglabel;
-
-    public LoginMain() {
-        prepareGUI();
-    }
-
-    private void prepareGUI() {
-        mainFrame = new JFrame();
-        mainFrame.setSize(400, 300);
-        mainFrame.setLayout(new GridLayout(3, 1));
-        headerLabel = new JLabel("", JLabel.CENTER);
-        statusLabel = new JLabel("", JLabel.CENTER);
-        statusLabel.setSize(350, 100);
-        controlPanel = new JPanel();
-        controlPanel.setLayout(new FlowLayout());
-        mainFrame.add(headerLabel);
-        mainFrame.add(controlPanel);
-        mainFrame.add(statusLabel);
-        mainFrame.setVisible(true);
-        mainFrame.setTitle("Ví dụ FlowLayout trong Java Swing");
-        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    }
-
-    private void showFlowLayoutDemo() {
-        headerLabel.setText("Layout in action: FlowLayout");
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.darkGray);
-        panel.setSize(200, 200);
-        FlowLayout layout = new FlowLayout();
-        layout.setHgap(10);
-        layout.setVgap(10);
-        panel.setLayout(layout);
-        panel.add(new JButton("OK"));
-        panel.add(new JButton("Cancel"));
-        controlPanel.add(panel);
-        mainFrame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        LoginMain demo = new LoginMain();
-        demo.showFlowLayoutDemo();
+//            System.out.println("pass nhập: " + pass + "và " + logininfo.get(userID));
+            if (pass.equals(logininfo.get(userID))) {
+//                System.out.println("pass nhập: " + pass + " và " + logininfo.get(userID) + "bằng nhau");
+                messagelabel.setForeground(Color.green);
+                messagelabel.setText("Login successful");
+                Main welcomePage = new Main();
+            } else {
+                //ko có else là if trẹn ko dc chạy
+                messagelabel.setForeground(Color.red);
+                messagelabel.setText("Login unsuccessfully");
+            }
+        }
+        if (e.getSource() == reg_btn) {
+            username.setText("");
+            password.setText("");
+        }
     }
 }

@@ -1,4 +1,4 @@
-package fixbugmoingay.whatthe;
+//package fixbugmoingay.whatthe;
 
 import java.util.Scanner;
 

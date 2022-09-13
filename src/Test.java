@@ -93,7 +93,7 @@ public class Test extends JFrame {
         mainPanel.setForeground(new Color(-16));
         log_btn.setBackground(new Color(-16));
         log_btn.setForeground(new Color(-16777216));
-        log_btn.add
+//        log_btn.add(ActionListener)
         mainPanel.add(log_btn);
         Border padd = BorderFactory.createEmptyBorder(20, 0, 0, 0);
         mainPanel.setVisible(true);
