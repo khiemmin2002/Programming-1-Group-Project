@@ -1,16 +1,17 @@
 import java.awt.event.ActionEvent;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.*;
+import java.sql.DriverManager;
 import javax.swing.*;
 import javax.swing.border.Border;
 
 import static javax.swing.BorderFactory.createEmptyBorder;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 
-public class RegisterPage extends Component implements ActionListener {
 
+public class RegisterPage extends Component {
+
+    public UserInfo newuser;
     private JFrame frame;
     private JPanel bottomPanel;
     private JPanel mainPanel;
@@ -150,7 +151,6 @@ public class RegisterPage extends Component implements ActionListener {
     }
 
     UserInfo newuserinfo = new UserInfo();
-
     private void cancelRegister() {
         re_Name.setText("");
         re_Password.setText("");
@@ -252,8 +252,6 @@ public class RegisterPage extends Component implements ActionListener {
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
-
-
         if (phone.matches("^\\d+$")) { // Kiểm tra sdt chỉ bao gồm số
             String phoneFormat = phone.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "$1-$2-$3");
             System.out.println(phoneFormat);
@@ -265,32 +263,21 @@ public class RegisterPage extends Component implements ActionListener {
                     JOptionPane.ERROR_MESSAGE);
             return;
         }
+        UserInfo newuser = new UserInfo();
+        newuser.AddUserInfo(username, email, phone, address, password);
+        if (newuser != null) {
+            JOptionPane.showMessageDialog(this,
+                    "Loading...",
+                    "Wait a minute",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(this,
+                    "Failed to register new user",
+                    "Try again",
+                    JOptionPane.ERROR_MESSAGE);
+        }
 
     }
 
-
-
-    public static void main (String[] args) {
-//        String DB_URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
-//        String user = "root";
-//        String pass = "0925747216aefgH@";
-//        try {
-//            Connection ctionn = DriverManager.getConnection(DB_URL, user, pass);
-//            System.out.println("COnnected");
-//            ctionn.close();
-//        } catch(Exception ex) {
-//            ex.printStackTrace();
-//        }
-//    }
-        RegisterPage registerpage = new RegisterPage();
-    }
-
-
-    /**
-     * @param e the event to be processed
-     */
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 }
