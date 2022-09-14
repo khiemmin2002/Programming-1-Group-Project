@@ -119,10 +119,14 @@ public class Test extends JFrame {
         frame.setVisible(true);
     }
     public static void main(String args[]) {
-        Test f = new Test();
-        //nên tạo 1 constructor để tạo layout cơ bản trc
-        //sau đó mấy cái màu mè tô điểm margin thì tạo methods
-        f.showGridLayout();
+//        Test f = new Test();
+//        //nên tạo 1 constructor để tạo layout cơ bản trc
+//        //sau đó mấy cái màu mè tô điểm margin thì tạo methods
+//        f.showGridLayout();
+        UserInfo testConnection = new UserInfo();
+        UserInfo.AddUserInfo();
     }
+
+
 
 }

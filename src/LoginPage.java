@@ -30,7 +30,7 @@ public class LoginPage implements ActionListener {
 
         frame = new JFrame();
         ///ko dc quên tạo parameters/ args ở đây nếu ko sẽ ko dùng dc public giữa các methods
-        frame.setSize(500, 500);
+        frame.setMinimumSize(new Dimension(450, 474));
         frame.setLayout(new GridLayout(5, 1));
         frame.setTitle("Login");
         ///lấy content pane là pane chính là frame còn mấy cái panel nằm trong
@@ -65,7 +65,7 @@ public class LoginPage implements ActionListener {
         reg_btn.setFont(new Font("Didot", Font.PLAIN, 14));
         reg_btn.setMargin(new Insets(10, 10, 10, 10));
         reg_btn.addActionListener(this);
-        messagelabel = new JLabel("not running", JLabel.CENTER);
+        messagelabel = new JLabel("", JLabel.CENTER);
         messagelabel.setFont(new Font("Didot", Font.PLAIN, 14));
         frame.add(loginlabel);
         frame.add(controlPanel);
@@ -77,7 +77,6 @@ public class LoginPage implements ActionListener {
 
 
         controlPanel.setBackground(new Color(-16));
-        controlPanel.setSize(400, 400);
         controlPanel.setForeground(new Color(-16777216));
         controlPanel.setLayout(new GridLayout(2, 2, 10, 10));
         Border padding = createEmptyBorder(0, 40, 0, 40);
@@ -110,8 +109,7 @@ public class LoginPage implements ActionListener {
         bottomPanel.setBackground(new Color(-16));
         bottomPanel.setForeground(new Color(-16777216));
         bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-//        Border padds = BorderFactory.createEmptyBorder(0, 10, 30, 10);
-//        bottomPanel.setBorder(padds);
+
         reg_btn.setBackground(new Color(-16));
         reg_btn.setForeground(new Color(-16777216));
         repass_btn.setBackground(new Color(-16));
@@ -120,8 +118,6 @@ public class LoginPage implements ActionListener {
         repass_btn.setBorderPainted(false);
         bottomPanel.add(repass_btn);
         bottomPanel.add(reg_btn);
-//        form1.add(username);
-//        form1.add(password);
         ///form1.setVisible hình như vân ko display phải dùng 1 panel khác
         // làm trung gian giữa jframe frame và panel form1
         frame.setVisible(true);
@@ -137,16 +133,23 @@ public class LoginPage implements ActionListener {
             String pass = password.getText();
 
 //            System.out.println("pass nhập: " + pass + "và " + logininfo.get(userID));
-            if (pass.equals(logininfo.get(userID))) {
+            if (logininfo.containsKey(userID)) {
+                if (pass.equals(logininfo.get(userID))) {
 //                System.out.println("pass nhập: " + pass + " và " + logininfo.get(userID) + "bằng nhau");
-                messagelabel.setForeground(Color.green);
-                messagelabel.setText("Login successful");
-                Main welcomePage = new Main();
+                    messagelabel.setForeground(Color.green);
+                    messagelabel.setText("You got access!");
+                    Main welcomePage = new Main();
+                } else {
+                    //ko có else là if trẹn ko dc chạy
+                    messagelabel.setForeground(Color.red);
+                    messagelabel.setText("Wrong password");
+                }
             } else {
-                //ko có else là if trẹn ko dc chạy
                 messagelabel.setForeground(Color.red);
-                messagelabel.setText("Login unsuccessfully");
+                messagelabel.setText("Username not found");
             }
+
+
         }
         if (e.getSource() == reg_btn) {
             username.setText("");

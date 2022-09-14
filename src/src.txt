@@ -246,3 +246,28 @@ public class LoginMain {
         demo.showFlowLayoutDemo();
     }
 }
+
+///jdbc connection to db
+import java.awt.event.ActionEvent;
+import java.awt.*;
+import java.sql.Connection;
+import java.sql.*;
+import javax.swing.*;
+
+public class RegisterPage {
+    public static void main (String[] args) {
+        String url = "jdbc:mysql://127.0.0.1:3306/?user=root";
+        String dbName = "demo" ;
+        String driver = "com.mysql.jdbc.Driver";
+        String userName = "root";
+        String password = "0925747216aefgH@";
+        try {
+//            Class.forName(driver);
+            Connection conn = DriverManager.getConnection(url,userName,password);
+            conn.close();
+            System.out.println("Successfully connected");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
