@@ -6,16 +6,16 @@ import java.util. *;
 public class sortProductByCategory {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter a category: ");
+        System.out.println("Please enter a category name: ");
         String n = sc.nextLine();
         String line = "";
         String splitBy = ",";
 
         try {
             //parse CSV file into BufferedReader class constructor
-            BufferedReader br = new BufferedReader(new FileReader("src/product.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("src/Products.csv"));
 
-            System.out.println("ID,Title,Price,Category");
+            System.out.println("ID,Name,Price,Category ID,Category Name,Amount,Description");
 
             while ((line = br.readLine()) != null)
             {
@@ -23,8 +23,8 @@ public class sortProductByCategory {
                 String[] product = line.split(splitBy);
 
                 //if user enters an existing category, show all lines (products) with that category
-                if (n.equals(product[3])) {
-                    System.out.println(product[0] + "," + product[1] + "," + product[2] + "," + product[3]);
+                if (n.equals(product[4])) {
+                    System.out.println(product[0] + "," + product[1] + "," + product[2] + "," + product[3] + "," + product[4] + "," + product[5] + "," + product[6]);
                 }
 
             }

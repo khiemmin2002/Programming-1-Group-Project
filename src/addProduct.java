@@ -7,32 +7,42 @@ public class addProduct {
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter the ID: ");
         String a = sc.nextLine();
-        System.out.println("Please enter the title: ");
+        System.out.println("Please enter the name: ");
         String b = sc.nextLine();
         System.out.println("Please enter the price: ");
-        double c = sc.nextDouble();
+        int c = sc.nextInt();
+        String x = sc.nextLine();
+        System.out.println("Please enter the category ID: ");
         String d = sc.nextLine();
-        System.out.println("Please enter the category: ");
+        System.out.println("Please enter the category name: ");
         String e = sc.nextLine();
+        System.out.println("Please enter the amount available: ");
+        int f = sc.nextInt();
+        String y = sc.nextLine();
+        System.out.println("Please enter the description: ");
+        String g = sc.nextLine();
         System.out.println("Product added!");
 
 
-        String ID = a;
-        String Title = b;
-        double Price = c;
-        String Category = e;
-        String filepath = "src/Product.csv";
+        String id = a;
+        String name = b;
+        int price = c;
+        String categoryID = d;
+        String categoryName = e;
+        int amount = f;
+        String description = g;
+        String filepath = "src/Products.csv";
 
-        saveRecord(ID,Title,Price,Category,filepath);
+        saveRecord(id,name,price,categoryID,categoryName,amount,description,filepath);
 
     }
-    public static void saveRecord(String ID,String Title,double Price,String Category,String filepath) {
+    public static void saveRecord(String id,String name,int price,String categoryID,String categoryName,int amount,String description,String filepath) {
         try {
             FileWriter fw = new FileWriter(filepath,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
 
-            pw.println(ID + "," + Title + "," + Price + "," + Category);
+            pw.println(id + "," + name + "," + price + "," + categoryID + "," + categoryName + "," + amount + "," + description);
             pw.flush();
             pw.close();
         }
