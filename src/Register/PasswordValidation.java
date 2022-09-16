@@ -63,7 +63,6 @@ public class PasswordValidation {
                 System.out.println("The password must contain at least a special character.");
                 System.out.println("Please enter again:");
                 password = passwordInput.nextLine();
-
             }
 
             // Prompting users if the password contains a whitespace character

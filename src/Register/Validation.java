@@ -5,31 +5,74 @@ import java.lang.String;
 
 public class Validation {
     private static String username;
+    private static String name;
     private static String password;
     private static String passConfirm;
     private static String phone;
     private static String email;
     private static String address;
+    private static String membership;
+
 
     public static String checkUsername() {
         Scanner usernameInput = new Scanner(System.in);
-
-        System.out.println("Enter your username: ");
+        System.out.println("Enter your username (through email format): ");
         String username = usernameInput.nextLine();
-        String strPattern = "^[a-zA-Z0-9_.]{8,20}$";
 
-        if (username.isEmpty()) {
-            System.out.println("Please enter the necessary field:");
-            username = usernameInput.nextLine();
-            if (!username.matches(strPattern)) {
-                System.out.println(username + " is not valid");
+         /*
+        CHECKING EMAIL RULES
+
+        The following restrictions are imposed in the email address' local part by using this regex:
+
+        It allows numeric values from 0 to 9.
+        Both uppercase and lowercase letters from a to z are allowed.
+        Underscore “_”, hyphen “-“, and dot “.” are allowed
+        Dot isn't allowed at the start and end of the local part.
+        Consecutive dots aren't allowed.
+        For the local part, a maximum of 64 characters are allowed.
+        Restrictions for the domain part in this regular expression include:
+
+        It allows numeric values from 0 to 9.
+        We allow both uppercase and lowercase letters from a to z.
+        Hyphen “-” and dot “.” aren't allowed at the start and end of the domain part.
+        No consecutive dots.
+
+        So some of the email addresses that will be valid via this email validation technique are:
+        username@domain.com
+        user.name@domain.com
+        user-name@domain.com
+        username@domain.co.in
+        user_name@domain.com
+
+        Here's a shortlist of some email addresses that will be invalid via this email validation:
+        username.@domain.com
+        .user.name@domain.com
+        user-name@domain.com.
+        username@.com
+        */
+
+        if (username != null) {
+            if (!username.matches("^(.+)@(\\S+)$")) {
+                System.out.println("@ must be included!");
                 System.out.println("Please enter again:");
                 username = usernameInput.nextLine();
-
-            } else {
-                System.out.println(username + " is valid");
-                setUsername(username);
             }
+            if (!username.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+                System.out.println("Other characters rather than A_Z characters are not permitted");
+                System.out.println("Please enter again:");
+                username = usernameInput.nextLine();
+            }
+            if (!username.matches("^[\\\\w!#$%&'*+/=?`{|}~^-]+(?:\\\\.[\\\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,6}$")) {
+                System.out.println("Top-level domain comprises of at least two to six letters (such as .com)\n" +
+                        "No dots at the end of the domain part (ex : @com. is not allowed)\n" );
+                System.out.println("Please enter again:");
+                username = usernameInput.nextLine();
+            }
+            System.out.println(username + " is valid");
+            setUsername(username);
+        } else {
+            System.out.println("Please enter the necessary field:");
+            username = usernameInput.nextLine();
         }
         return username;
     }
@@ -37,9 +80,39 @@ public class Validation {
     public String getUsername() {
         return username;
     }
-
     public static void setUsername(String newusername) {
         username = newusername;
+    }
+
+    public static String checkName() {
+        Scanner nameInput = new Scanner(System.in);
+
+        System.out.println("Enter your full name: ");
+        String name = nameInput.nextLine();
+        String strPattern = "^(?=.{1,40}$)[a-zA-Z]+(?:[-'\\s][a-zA-Z]+)*$";
+
+        if (name !=null) {
+            if (!name.matches(strPattern)) {
+                System.out.println("Other characters rather than from A-Z or a-z are not allowed! (blank space is accepted)");
+                System.out.println("Please enter again:");
+                name = nameInput.nextLine();
+            }
+                System.out.println(name + " is valid");
+                setName(name);
+
+        } else {
+            System.out.println("Please enter the necessary field:");
+            name = nameInput.nextLine();
+        }
+        return name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public static void setName(String newname) {
+        name = newname;
     }
 
     public static String checkPassword() {
@@ -122,9 +195,10 @@ public class Validation {
         passConfirm = input.nextLine();
         if (passConfirm.equals(password)) {
             System.out.println("Password Confirmation Valid");
+        } else {
+            System.out.println("Must match the previous entry");
+            passConfirm = input.nextLine();
         }
-        System.out.println("Must match the previous entry");
-        passConfirm = input.nextLine();
     }
 
     public String getPassword() {
@@ -137,7 +211,7 @@ public class Validation {
 
     public static String checkPhoneFormat() {
         Scanner phoneInput = new Scanner(System.in);
-        System.out.println("Enter your username: ");
+        System.out.println("Enter your phone number: ");
         String phone = phoneInput.next();
 //        System.out.print("Please enter your phone number: ");
 //        String phoneInput = input.next();
@@ -189,76 +263,10 @@ public class Validation {
         phone = newphonenumber;
     }
 
-    public static String checkEmailFormat() {
-        Scanner emailInput = new Scanner(System.in);
-        System.out.println("Enter your username: ");
-        String email = emailInput.nextLine();
-
-         /*
-        CHECKING EMAIL RULES
-
-        The following restrictions are imposed in the email address' local part by using this regex:
-
-        It allows numeric values from 0 to 9.
-        Both uppercase and lowercase letters from a to z are allowed.
-        Underscore “_”, hyphen “-“, and dot “.” are allowed
-        Dot isn't allowed at the start and end of the local part.
-        Consecutive dots aren't allowed.
-        For the local part, a maximum of 64 characters are allowed.
-        Restrictions for the domain part in this regular expression include:
-
-        It allows numeric values from 0 to 9.
-        We allow both uppercase and lowercase letters from a to z.
-        Hyphen “-” and dot “.” aren't allowed at the start and end of the domain part.
-        No consecutive dots.
-
-        So some of the email addresses that will be valid via this email validation technique are:
-        username@domain.com
-        user.name@domain.com
-        user-name@domain.com
-        username@domain.co.in
-        user_name@domain.com
-
-        Here's a shortlist of some email addresses that will be invalid via this email validation:
-        username.@domain.com
-        .user.name@domain.com
-        user-name@domain.com.
-        username@.com
-        */
-
-        String regexStr = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\\\.[A-Za-z0-9-]+)*(\\\\.[A-Za-z]{2,})$";
-
-        if (email != null) {
-            if (!email.matches(regexStr)) {
-                System.out.println(phone + " is not valid");
-                System.out.println("It allows numeric values from 0 to 9.\n" +
-                        "        Both uppercase and lowercase letters from a to z are allowed.\n" +
-                        "        Underscore “_”, hyphen “-“, and dot “.” are allowed\n" +
-                        "        Dot isn't allowed at the start and end of the local part.\n" +
-                        "        Consecutive dots aren't allowed.");
-                System.out.println("Please enter again:");
-                email = emailInput.nextLine();
-            }
-                System.out.println(email + " is valid");
-                setEmail(email);
-            } else {
-            System.out.println("Please enter the necessary field:");
-            email = emailInput.nextLine();
-        }
-        return email;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public static void setEmail(String newemail) {
-        email = newemail;
-    }
 
     public static String checkAddress() {
         Scanner addressInput = new Scanner(System.in);
-        System.out.println("Enter your username: ");
+        System.out.println("Enter your address: ");
         String address = addressInput.nextLine();
 
         /*
@@ -274,20 +282,52 @@ public class Validation {
         if (address.isEmpty()) {
             System.out.println("Please enter the necessary field:");
             address = addressInput.nextLine();
-
         } else {
-            System.out.println(address + " is valid");
+            System.out.println("Address saved!");
             setAddress(address);
         }
         return address;
     }
-
     public String getAddress() {
         return address;
     }
 
     public static void setAddress(String newaddress) {
         address = newaddress;
+    }
+
+    public static String addMembership() {
+        String[] membershipOptions = {"Standard", "Medium", "Premium"};
+        Scanner optInput = new Scanner(System.in);
+            System.out.println("Available membership plan:");
+            for (int i = 0; i < membershipOptions.length; i++) {
+                System.out.println((i + 1) + ". " + membershipOptions[i]);}
+            System.out.println("Please select your membership plan:");
+            int choice = optInput.nextInt();
+            switch (choice) {
+                case 1:
+                    System.out.println("Standard plan is chosen!");
+                    setMembershipPlan(membershipOptions[1]);
+                    break;
+                case 2:
+                    System.out.println("Medium plan is chosen!");
+                    setMembershipPlan(membershipOptions[2]);
+                    break;
+                case 3:
+                    System.out.println("Premium plan is chosen!");
+                    setMembershipPlan(membershipOptions[3]);
+                    break;
+                default:
+                    System.out.println(choice + " is not a valid option! Please select again!");
+            }
+            return membership;
+    }
+    public static String getMembershipPlan() {
+        return membership;
+    }
+
+    public static void setMembershipPlan(String newmembership) {
+        membership = newmembership;
     }
 
 }

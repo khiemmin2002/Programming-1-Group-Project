@@ -1,3 +1,7 @@
- Username, Password, Email, Phone, Address,Account
-Jason_Max
-Jason_max
+CustomerID, CustomerUsername, Customer Name, CustomerAddress, CustomerPhone, CustomerPassword, CustomerTotalSpending, CustomerMembershipTier,NULL
+1,kieuanh@yahoo.com,NULL,NULL,NULL,NULL,NULL,NULL,NULL
+1,kieunh@gmail.com,0925747216aefgH@,NULL,NULL,NULL,NULL,NULL,NULL
+1,Medium,NULL,NULL,NULL,NULL,NULL,NULL,NULL
+1,Kieuanh,Ngueyn HA,0925747216aefgH@,nhkiuanh@yahoo.com ,058-646-0049,26 Tan Thoi Nhat 5, District 12,
+1,kieuanh,Nguyen HA,0925747216aefG@,nhkiuanh0@gmail.com,058-646-0049,26 Tan Thoi Nhat 5,,Medium
+1,nhkiuanh@gmail.com,Nguyen AH,26 Tan Thoi Nhat 6,058-646-0069,0925747216aefgH@, Medium,NULL,NULL
