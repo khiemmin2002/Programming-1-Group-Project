@@ -1,6 +1,8 @@
 package LoginGUI;
 
 import java.util.HashMap;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class IDandPasswords {
     static HashMap <String, String> loginInfo = new HashMap <String, String>();
@@ -16,10 +18,32 @@ public class IDandPasswords {
         return loginInfo;
 
     }
-//    public static void main (String[] args) {
-//        LoginGUI.IDandPasswords j = new LoginGUI.IDandPasswords();
-//        j.getLoginInfo();
-//        System.out.println("Initial Mappings are: " + loginInfo.get("admin"));
-//    }
+///C001-****
+    public static String IDgenerate() {
+        int count = 0;
+        int[] array = new int[9999];
+
+        String ID = new String();
+        for (int i = 0; i < 2; i++) {
+            count++;
+            int first = count;
+            int second_part = (int) (Math.random() * 9999);
+            ID = "C"+ "00"+ first + "-" + second_part;
+            System.out.println(ID);
+            System.out.println(createID());
+        }
+        return ID;
+    }
+    private static AtomicLong idCounter = new AtomicLong();
+
+    public static String createID()
+    {
+        return String.valueOf(idCounter.getAndIncrement());
+    }
+    public static void main (String[] args) {
+        IDgenerate();
+        String uniqueID = UUID.randomUUID().toString();
+        System.out.println(createID());
+    }
 
 }

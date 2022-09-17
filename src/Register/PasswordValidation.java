@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class PasswordValidation {
     private static String password;
-    public static String checkPassword() {
+    public static void checkPassword() {
         Scanner passwordInput = new Scanner(System.in);
         System.out.print("Enter your password: ");
         String password = passwordInput.nextLine();
@@ -48,6 +48,7 @@ public class PasswordValidation {
                 System.out.println("The password must contain at least a lowercase character.");
                 System.out.println("Please enter again:");
                 password = passwordInput.nextLine();
+                return;
             }
 
             // Prompting users if the password does not contain a lowercase character
@@ -76,7 +77,6 @@ public class PasswordValidation {
             System.out.println(password + " is valid");
 
         }
-        return password;
     }
     public String getPassword() {
         return password;
