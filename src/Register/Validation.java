@@ -9,7 +9,6 @@ public class Validation {
     private static String password;
     private static String passConfirm;
     private static String phone;
-    private static String email;
     private static String address;
     private static String membership;
 
@@ -319,7 +318,6 @@ public class Validation {
         int first;
         int second_part;
         int count =0;
-
 
         for (int i = 0; i <1; i++) {
             first= count;

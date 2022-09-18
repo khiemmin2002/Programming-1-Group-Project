@@ -18,14 +18,14 @@ public class RegPage {
 
     public static void main(String[] args) {
         System.out.println("Please enter the following information to register new account");
-//        ID = Validation.IDgenerate();
-//        username = Validation.checkUsername();
+        ID = Validation.IDgenerate();
+        username = Validation.checkUsername();
         name = Validation.checkName();
-//        password = Validation.checkPassword();
-//        phone = Validation.checkPhoneFormat();
-//        address = Validation.checkAddress();
-//        membership = Validation.addMembership();
-//        saveUserInfo(ID, username, name, address, phone, password, membership);
+        password = Validation.checkPassword();
+        phone = Validation.checkPhoneFormat();
+        address = Validation.checkAddress();
+        membership = Validation.addMembership();
+        saveUserInfo(ID, username, name, address, phone, password, membership);
 
     }
 
@@ -34,7 +34,6 @@ public class RegPage {
             FileWriter fw = new FileWriter("src/Register/UserInfo.csv", true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-
 
             pw.println(ID + "," + username + "," + name + "," + address  + "," + phone + "," + password + "," + "," + membership);
             pw.flush();
