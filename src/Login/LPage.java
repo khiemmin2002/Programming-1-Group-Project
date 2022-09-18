@@ -1,9 +1,6 @@
 package Login;
 
-import java.awt.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class LPage {
@@ -12,7 +9,6 @@ public class LPage {
     private static String password;
     public static void main (String[] args) {
         Scanner input = new Scanner(System.in);
-        String username, password;
 
         System.out.println("Enter your username: ");
         username = input.nextLine();

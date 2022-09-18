@@ -82,10 +82,8 @@ public class Validation {
 
     public static String checkName() {
         Scanner nameInput = new Scanner(System.in);
-
         System.out.println("Enter your full name: ");
-//        String name = nameInput.nextLine();
-        String strPattern = "^(?=.{1,40}$)[a-zA-Z]+(?:[-'\\s][a-zA-Z]+)*$";
+        String strPattern = "^(?=.{1,40}$)[a-zA-Z ]+(?:[-'\s][a-zA-Z ]+)*$";
 
         do {
             String name = nameInput.nextLine();
@@ -206,17 +204,6 @@ public class Validation {
     public static String checkPhoneFormat() {
         Scanner phoneInput = new Scanner(System.in);
         System.out.println("Enter your phone number: ");
-
-//        System.out.print("Please enter your phone number: ");
-//        String phoneInput = input.next();
-//
-//        if (phoneInput.matches("^\\d+$")) { // Kiểm tra sdt chỉ bao gồm số
-//            String phoneFormat = phoneInput.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "$1-$2-$3");
-//            System.out.println(phoneFormat);
-//            break;
-//        } else {
-//            System.out.println("You can't enter non-digit value!"); // Nhắc ng dùng chỉ nhập số, ko có chữ
-//        }
 
         /*
         CHECKING PHONE RULES
