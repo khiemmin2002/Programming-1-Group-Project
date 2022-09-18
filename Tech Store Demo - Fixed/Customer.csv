@@ -1,8 +1,0 @@
-CustomerID,CustomerUsername,Customer Name,CustomerAddress,CustomerPhone,CustomerPassword,CustomerTotalSpending,CustomerMembershipTier,NULL
-C001,kieuanh@yahoo.com,NULL,NULL,NULL,NULL,NULL,NULL,NULL
-C002,kieunh@gmail.com,0925747216aefgH@,NULL,NULL,NULL,NULL,NULL,NULL
-C003,Medium,NULL,NULL,NULL,NULL,NULL,NULL,NULL
-C004,Kieuanh,Ngueyn HA,0925747216aefgH@,nhkiuanh@yahoo.com ,058-646-0049,26 Tan Thoi Nhat 5, District 12,
-C005,kieuanh,Nguyen HA,0925747216aefG@,nhkiuanh0@gmail.com,058-646-0049,26 Tan Thoi Nhat 5,,Medium
-C006,nhkiuanh@gmail.com,Nguyen AH,26 Tan Thoi Nhat 6,058-646-0069,0925747216aefgH@, Medium,NULL,NULL
-C007,abcd123@gamilcom,Dat Villa,123 Tran Duy Hung,090-345-6555,AnthonyMartila#11,,Medium,1,harrykane93,Harry Kane,56 Tottenham,0907827235,iLove,,Medium
