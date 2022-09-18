@@ -51,30 +51,6 @@ public class Validation {
         username@.com
         */
 
-//        while (username != null) {
-//            if (!username.matches("^(.+)@(\\S+)$")) {
-//                System.out.println("@ must be included!");
-//                System.out.println("Please enter again:");
-//                username = usernameInput.nextLine();
-//            }
-//            if (!username.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
-//                System.out.println("Other characters rather than A_Z characters are not permitted");
-//                System.out.println("Please enter again:");
-//                username = usernameInput.nextLine();
-//            }
-//            if (!username.matches("^[\\\\w!#$%&'*+/=?`{|}~^-]+(?:\\\\.[\\\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,6}$")) {
-//                System.out.println("Top-level domain comprises of at least two to six letters (such as .com)\n" +
-//                        "No dots at the end of the domain part (ex : @com. is not allowed)\n" );
-//                System.out.println("Please enter again:");
-//                username = usernameInput.nextLine();
-//            } else {
-//            System.out.println(username + " is valid");
-//            setUsername(username);
-//            break;}}
-//        while (username.isEmpty()) {
-//            System.out.println("Please enter the necessary field:");
-//            username = usernameInput.nextLine();
-//        }
         do {
             String username = usernameInput.nextLine();
             if (username != "") {
@@ -128,21 +104,6 @@ public class Validation {
         return name;
     }
 
-//        while (name.isEmpty()) {
-//            System.out.println("Please enter the necessary field:");
-//            name = nameInput.nextLine();
-//        }
-//        while (name != null) {
-//            if (!name.matches(strPattern)) {
-//                System.out.println("Other characters rather than from A-Z or a-z are not allowed! (blank space is accepted)");
-//                System.out.println("Please enter again:");
-//                name = nameInput.nextLine();
-//            } else {
-//                System.out.println(name + " is valid");
-//                setName(name);
-//                newname = name;
-//                break;
-//            }}}
 
     public String getName() {
         return name;
@@ -172,60 +133,7 @@ public class Validation {
         /*if (passwordInput.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z\\d])(?=\\S+$).{8,20}$")) {
             return validStatus;
         }*/
-//        while (password == null) {
-//            System.out.println("Please enter the necessary field:");
-//            password = passwordInput.nextLine();
-//        }
-//        while (password != null) {
-//            // Prompting users if the password's length is less than 8 or more than 20 characters
-//            if (password.length() < 8 || password.length() > 20) {
-//                System.out.println("The password must be longer than 8 characters and not exceed 20 characters.");
-//                System.out.println("Please enter again:");
-//                password = passwordInput.nextLine();
-//                continue;
-//            }
-//            // Prompting users if the password does not contain at least 1 digit
-//            if (!password.matches("(.*\\d.*)")) {
-//                System.out.println("The password must contain at least 1 digit.");
-//                System.out.println("Please enter again:");
-//                password = passwordInput.nextLine();
-//                continue;
-//            }
-//            // Prompting users if the password does not contain a lowercase character
-//            if (!password.matches("(.*[a-z].*)")) {
-//                System.out.println("The password must contain at least a lowercase character.");
-//                System.out.println("Please enter again:");
-//                password = passwordInput.nextLine();
-//                continue;
-//            }
-//            // Prompting users if the password does not contain a lowercase character
-//            if (!password.matches("(.*[A-Z]).*")) {
-//                System.out.println("The password must contain at least an uppercase character.");
-//                System.out.println("Please enter again:");
-//                password = passwordInput.nextLine();
-//                continue;
-//            }
-//            // Prompting users if the password does not contain a special character
-//            if (!password.matches("(.*[^a-zA-Z\\d].*)")) {
-//                System.out.println("The password must contain at least a special character.");
-//                System.out.println("Please enter again:");
-//                password = passwordInput.nextLine();
-//                continue;
-//            }
-//            // Prompting users if the password contains a whitespace character
-//            if (!password.matches("(\\S+$)")) {
-//                System.out.println("The password do not contain any whitespace character.");
-//                System.out.println("Please enter again:");
-//                password = passwordInput.nextLine();
-//                continue;
-//            } else {
-//                System.out.println(password + " is valid");
-//                setPassword(password);
-//                ConfirmPass(password);
-//                break;
-//            }}
-//        return password;
-//    }
+
         do {
             String password = passwordInput.nextLine();
             if (password != "") {
@@ -318,31 +226,7 @@ public class Validation {
         /*if (phone.matches("^[0-9]{10}$")) {
             return validStatus;
         }*/
-//        while (phone.isEmpty()){
-//            System.out.println("Please enter the necessary field:");
-//            phone = phoneInput.next();
-//        }
-//        while (phone != null) {
-//            if (!phone.matches("^[0-9]{10}$")) {
-//                    System.out.println("It must contains 10 numbers!");
-//                    System.out.println("Please enter again:");
-//                    phone = phoneInput.next();
-//                    continue;
-//                }
-//            if (!phone.matches("^\\d+$")) {
-//                    System.out.println("You can't enter non-digit value!");
-//                    System.out.println("Please enter again:");
-//                    phone = phoneInput.next();
-//                    continue;
-//                } else {
-//                phone = phone.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "$1-$2-$3");
-//                System.out.println(phone);
-//                System.out.println("Phone format is valid");
-//                setPhoneNumber(phone);
-//                break;
-//            }}
-//        return phone;
-//    }
+
 
         do {
             String phone = phoneInput.next();
@@ -350,13 +234,11 @@ public class Validation {
                 if (!phone.matches("^[0-9]{10}$")) {
                     System.out.println("It must contains 10 numbers!");
                     System.out.println("Please enter again:");
-                    phone = phoneInput.next();
                     continue;
                 }
                 if (!phone.matches("^\\d+$")) {
                     System.out.println("You can't enter non-digit value!");
                     System.out.println("Please enter again:");
-                    phone = phoneInput.next();
                     continue;
                 }
                 phone = phone.replaceFirst("(\\d{3})(\\d{3})(\\d+)", "$1-$2-$3");
@@ -443,5 +325,40 @@ public class Validation {
     public static void setMembershipPlan(String newmembership) {
         membership = newmembership;
     }
+
+    public static String ID;
+    public static String [] ID_array = new String [1000];
+    public static String IDgenerate() {
+        int first;
+        int second_part;
+        int count =0;
+
+
+        for (int i = 0; i <1; i++) {
+            first= count;
+            second_part = (int) (Math.random() * 9999);
+            ID = "C"+ "00"+ first + "-" + second_part;
+
+            if (count >= 10 && count <100) {
+                ID = "C"+ "0"+ first + "-" + second_part;
+                ID_array[i] = ID;
+            } else if (count >= 100) {
+                ID = "C"+ first + "-" + second_part;
+                ID_array[i] = ID;
+            }
+            ID_array[i] = ID;
+            System.out.println(ID);
+            count++;
+        }
+        return ID;
+    }
+
+    public static String getID() {
+        return ID;
+    }
+    public static void setID(String newID) {
+        ID = newID;
+    }
+
 
 }

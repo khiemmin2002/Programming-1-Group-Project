@@ -1,4 +1,4 @@
-package Register;//package fixbugmoingay.whatthe;
+package RegisterGUI;//package fixbugmoingay.whatthe;
 
 import java.util.Scanner;
 
